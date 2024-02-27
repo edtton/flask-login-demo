@@ -48,9 +48,14 @@ def login():
         connection = sqlite3.connect('database.db')
         cursor = connection.cursor()
 
+        # raw query method 
         query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
         cursor.execute(query)
 
+        # parameterized query method 
+        # query = "SELECT * FROM users WHERE username = ? AND password = ?"
+        # cursor.execute(query, username, password)
+    
         result = cursor.fetchall() 
 
         connection.commit()
